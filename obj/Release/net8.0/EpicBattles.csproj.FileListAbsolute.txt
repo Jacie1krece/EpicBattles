@@ -1,0 +1,14 @@
+C:\Users\janch\source\repos\EpicBattles\bin\Release\net8.0\EpicBattles.exe
+C:\Users\janch\source\repos\EpicBattles\bin\Release\net8.0\EpicBattles.deps.json
+C:\Users\janch\source\repos\EpicBattles\bin\Release\net8.0\EpicBattles.runtimeconfig.json
+C:\Users\janch\source\repos\EpicBattles\bin\Release\net8.0\EpicBattles.dll
+C:\Users\janch\source\repos\EpicBattles\bin\Release\net8.0\EpicBattles.pdb
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.AssemblyInfoInputs.cache
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.AssemblyInfo.cs
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.csproj.CoreCompileInputs.cache
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.dll
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\refint\EpicBattles.dll
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.pdb
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.genruntimeconfig.cache
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\ref\EpicBattles.dll

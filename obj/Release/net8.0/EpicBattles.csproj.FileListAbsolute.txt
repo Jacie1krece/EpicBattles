@@ -12,3 +12,4 @@ C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\refint\EpicBattles.dl
 C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.pdb
 C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.genruntimeconfig.cache
 C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\ref\EpicBattles.dll
+C:\Users\janch\source\repos\EpicBattles\obj\Release\net8.0\EpicBattles.sourcelink.json

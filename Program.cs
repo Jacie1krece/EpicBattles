@@ -1,7 +1,9 @@
-﻿string SanitizeTextInput(string input, string fallback)
+﻿string SanitizeTextInput(string input, string fallback, bool integerMode)
 {
+    input = input.Trim();
     if (input == null) return fallback;
     else if (input.Length == 0) return fallback;
+    else if (integerMode && !Int32.TryParse(input, out _)) return fallback;
     else return input;
 }
 int numberOfPlayers;
@@ -36,12 +38,15 @@ string[] deathMessages =
         "{0} dropped Yoshi off a cliff into a bottomless pit. {1} decided to do the same with {0}. ",
         "{0} thought that this battle was easy breezy. {1} proved them wrong. ",
         "{0} went on a date with {1}, only to find out that they were a Ghoul. ",
+        "{0} tried to escape {1}. ",
+        "{0} fought {1}, but the turn limit struck 0. ",
         "{0}, {1}, and {2} did a strength contest. {2} picked up a car. {1} picked up a building. {0} died of overextertion trying to pick up a water bottle. ",
         "{0}, {1}, and {2} played a battling game, but had only 2 controllers. Instead of doing a little tournament, {1} decided to solve the issue by killing {0}. ",
         "{0}, {1}, and {2} played Among Us together. {0} was so sus that {1} ejected them out of the window, then lost because {2} was the Impostor. ",
         "{0} and {1} fought together, while {2} jokingly played the Mortal Kombat theme. In the end, {1} performed a Fatality on {0}. ",
         "{0} swapped minds with {1}, oblivious to the fact that {2} planted a bomb on {1}. ",
         "{0} accidentally threw a Wiimote straight into {2}'s TV, so {1} 'accidentally' threw a Wiimote straight into {0}'s skull. ",
+        "{0} and {2} battled {1}, Mario & Luigi style. {1} defeated {0}, and {2} remembered that they forgot to bring any 1-up mushrooms. ",
         "",
         "{0} skill issued. ",
         "{0} said the N-word and was kicked out of the game. ",
@@ -80,6 +85,15 @@ string[] deathMessages =
         "{0} wanted to make some cereal. Not even 10 minutes later and they burned down their entire house, themselves included. ",
         "{0} smoked a cigarette. ",
         "{0} was sent to Brazil. ",
+        "{0} became so famous that people started writing fanfictions about them. Out of curiosity, they read one and immediately died of embarrassment. ",
+        "{0} tried to play Rush E on their personal piano, and mangled their own hands beyond recognition. ",
+        "{0} got straight-up deleted. ",
+        "{0} sacrificed themselves. ",
+        "Hey {0}, are you worried that you'll die in this scene? You're right! ",
+        "{0} took on a special challenge: to take a sip of vodka for every terrible meme/reference they saw in an epic battle scene. ",
+        "{0} drank a cistern's worth of sake in one go, and as they aren't an Oni, their liver literally exploded. ",
+        "{0} fought a ghost version of themselves... and lost. ",
+        "{0} got blown away by the wind. ",
         "{1} summoned Beatrice to take care of {0}. ",
         "{1} killed {0}. ",
         "{1} hacked all the nuke launchers in the world and sent all the nukes straight onto {0}'s house. ",
@@ -115,10 +129,24 @@ string[] deathMessages =
         "{1} found out that they have the power to propel a coin like a railgun from their own fist. They used {0} as their target. ",
         "{1} sent {0} to Brazil. ",
         "{1} was hired by the SCP Foundation to take care of SCP-{0}. ",
+        "{1} called {0} a 'boomer', which caused them to literally explode. ",
+        "{1} strongly warned {0}, and this time it was not a joke. ",
+        "{1} invoked a magical storm, turning {0} inside-out. Quite literally. ",
+        "{1} made {0} a nice 'paradise hell', which was too much for {0}. ",
+        "{1} squished {0} so hard that they went below their Schwarzschild radius. ",
+        "{1} unintentionally killed {0}, but they can't use SAVEs to revert the situation. ",
+        "{1} somehow quantum entangled {0} with a lit bomb. ",
+        "{1} threw {0} through a mirror, and then shattered it. ",
+        "{1} absolutely obliterated {0}. ",
+        "{1} revealed their vampiric nature, and sucked all of {0}'s blood. ",
+        "{1} started a nuclear reactor. Unfortunately, {0} was doing a routine mainetance, and got very radiated. ",
+        "{1} overrode {0}'s data with junk data, trying to make a 'glitch player'. It failed, and ",
         "{1} Tanaka'd the Tanaka out of {0}'s Tanaka using {2}'s Tanaka Katana. ",
+        "{1} sacrificed {0} to get {2}'s blessings. ",
         "{1} and {2} wanted to kill this love, by killing {0}. ",
         "{1} and {2} found {0}'s corpse at an anaboned school in another dimension. ",
-        "{1} used {2} to kill {0}. ",
+        "{1} used {2} as a weapon to kill {0}. ",
+        "{1} and {2} tapped into the abilities of the Crazy Backup Dancers (Mai Teireida and Satono Nishida), and started dancing behind {0}. Because {1} got Mai's ability, it was them who took all of {0}'s vitality. ",
         "{2} pissed off {1} so much that they did a tableflip straight onto {0}, crushing them with the sheer force of a table. ",
         "[this death message was censored] "
     ];
@@ -243,6 +271,9 @@ string[] fillerMessages =
         "{0} trusts in eternity, and that time is eternal.",
         "{0} gives some choccy milk to {1}.",
         "{0} wants to be a girl. Or maybe they're already a girl?",
+        "{0} wants to be a boy. Or maybe they're already a boy?",
+        "{0} wants to be a hermaphrodite. Or maybe they're already a hermaphrodite?",
+        "{0} wants to be a cat. Or maybe they're already a cat?",
         "{0} made a deal with the Devil.",
         "{0} made a deal with {1}.",
         "{0} said to {1} 'Well, Just You Wait!'.",
@@ -255,19 +286,46 @@ string[] fillerMessages =
         "{0} sings the Ievan Polkka.",
         "{0} declared themself as the Mr. Fanservice.",
         "{0} has a dillema in terms of who to kill.",
+        "{0} started to wonder if their life was just a sequence of random events that have the possibility of killing them.",
+        "{0} considers it their own duty to survive.",
+        "{0} just got a 5* character from a gacha: {1}. It was the limited banner character.",
+        "{0} just got a 5* character from a gacha: {1}. {0} lost the 50/50, but still got something nice.",
+        "{0} just got a 5* character from a gacha: {1}. {0} lost the 50/50 so hard that {1} just had to say 'Priviet!'.",
+        "{0} just got a 4* character from a gacha: {1}. It is pretty damn good!",
+        "{0} just got a 4* character from a gacha: {1}. It is okay-ish.",
+        "{0} just got a 4* character from a gacha: {1}. It is Arlan-tier.",
+        "{0} employed some Tsukumogami to make some background music. Too bad it's a console app.",
+        "{0} strongly warns {1}.",
+        "Wonder how toxic would a ship of {0} and {1} would be?",
+        "{0} decided to have a feast with {1} and {2}.",
+        "{0} turned to hedonism in these trying times.",
+        "{0} starts imagining this combat as being alike to SBF5 one, despite this being absolutely not the case.",
+        "{0} starts to do a nice disco with some monkeys.",
+        "{0} wants to turn up the difficulty mode to 'Hellish Paradise'. It's not that game, sorry.",
+        "{0} starts behaving like an animal from boredom.",
+        "{0} and {1} make a perfect team! Probably. Perhaps. Maybe. I don't know. They might even kill each other.",
+        "{0} takes a nap.",
+        "{0} met their demise after being fatally killed to death. Somehow, the quadruple-negative cancelled itself out, and {0} ended up completely fine.",
+        "{0} thinks that this game is perfectly balanced and with no exploits.",
+        "{0} had the balls to tell {1} that they absolutely suck at this game.",
+        "{0} wants to be a [[BIG SHOT]].",
+        "{0} killed {1}. Thankfully, {1} still has some lives left.",
+        "{0} sneaked into the reward room and took all the rewards for themselves.",
+        "{0} has a weather report: 'it fuckin windy'.",
+        "{0} dances the Third Eye Tango.",
         "Kogasa Tatara surprises you!",
         "I bet you'll forget about this message, even if you noticed it.",
         "[this filler message was censored]",
         "No message."
     ];
 Console.WriteLine("Provide the number of players:");
-numberOfPlayers = int.Parse(SanitizeTextInput(Console.ReadLine()!, "5"));
+numberOfPlayers = int.Parse(SanitizeTextInput(Console.ReadLine()!, "5", true));
 List<string> players = new List<string>(numberOfPlayers);
 List<string> deadPlayers = new List<string>();
 for (int i = 0; i < numberOfPlayers; i++)
 {
     Console.WriteLine($"Provide the name of player {i + 1}: ");
-    players.Add(SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}"));
+    players.Add(SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false));
 }
 Random random = new Random();
 int verdict;
@@ -301,6 +359,7 @@ while (deadPlayers.Count < numberOfPlayers - 1)
 Console.WriteLine("\nThe battle has ended! Here are the results:");
 Console.WriteLine(String.Concat("1st place: ", players.First()));
 deadPlayers.Reverse();
+
 int place;
 for (int i = 0; i < deadPlayers.Count; i++)
 {

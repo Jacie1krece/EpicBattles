@@ -40,11 +40,21 @@ string[] deathMessages =
         "{0} went on a date with {1}, only to find out that they were a Ghoul. ",
         "{0} tried to escape {1}. ",
         "{0} fought {1}, but the turn limit struck 0. ",
+        "{0} accidentally overrided themselves with {1}. ",
+        "{0} wanted to do a Midnight Parade, but {1} got into the Rumia persona a little bit too well and devoured {0}. ",
+        "{0} considered themselves as an Internet Angel, but {1} gave them a reality check, showing that {0} is only a needy streamer on an internet overdose and with a failing career. ",
+        "{0} dared to eat {1}'s pudding. ",
+        "{0} refused to listen to {1}. ",
         "{0}, {1}, and {2} did a strength contest. {2} picked up a car. {1} picked up a building. {0} died of overextertion trying to pick up a water bottle. ",
         "{0}, {1}, and {2} played a battling game, but had only 2 controllers. Instead of doing a little tournament, {1} decided to solve the issue by killing {0}. ",
         "{0}, {1}, and {2} played Among Us together. {0} was so sus that {1} ejected them out of the window, then lost because {2} was the Impostor. ",
         "{0} and {1} fought together, while {2} jokingly played the Mortal Kombat theme. In the end, {1} performed a Fatality on {0}. ",
         "{0} swapped minds with {1}, oblivious to the fact that {2} planted a bomb on {1}. ",
+        "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word「らめん」. ",
+        "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word「うどん」. ",
+        "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word「ラマダン」. ",
+        "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word「ダンダダン」. ",
+        "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word that {1} started with. ",
         "{0} accidentally threw a Wiimote straight into {2}'s TV, so {1} 'accidentally' threw a Wiimote straight into {0}'s skull. ",
         "{0} and {2} battled {1}, Mario & Luigi style. {1} defeated {0}, and {2} remembered that they forgot to bring any 1-up mushrooms. ",
         "",
@@ -94,6 +104,26 @@ string[] deathMessages =
         "{0} drank a cistern's worth of sake in one go, and as they aren't an Oni, their liver literally exploded. ",
         "{0} fought a ghost version of themselves... and lost. ",
         "{0} got blown away by the wind. ",
+        "Kogasa Tatara surprised {0} so hard that they died of a heart attack. ",
+        "{0} became a truly valiant hero. But at what cost? Well, ",
+        "{0} played RUSH E so well that their personal piano catched on fire. ",
+        "Apparently, {0} was a diabetic, and just died of diabetes. ",
+        "Apparently, {0} was a diabetic, and just died of hyperglicemia. ",
+        "Apparently, {0} was a diabetic, and just died of hypoglicemia. ",
+        "{0} activated their cheats. They were immediately banned. ",
+        "{0} turned into stone. ",
+        "{0} ate a Chemical Cookie done in a Magical Mixer. It had POISON inside, and the YUC'e reference overload doesn't help. ",
+        "{0} died from an acquired poison. ",
+        "{0} died from an internet overdose. ",
+        "{0} underestimated K. Round's strength. ",
+        "{0} was killed by Truck-kun. ",
+        "{0} watched one too many Japanese ads and lost it from the absurdity. ",
+        "{0} fought The Devourer. With only Bio attacks. ",
+        "{0} wanted to see the mermaids so badly they didn't prepare anything to actually breathe while underwater. ",
+        "{0}'s last words: \"Uh oh.\" ",
+        "{0}'s last words: \"OH MY GOD PLEASE NOOOOOO-\" ",
+        "{0}'s last words: \"Shikanoko nokonok-\" ",
+        "{0}'s last words: \"Touka spadła ze stołk-\" ",
         "{1} summoned Beatrice to take care of {0}. ",
         "{1} killed {0}. ",
         "{1} hacked all the nuke launchers in the world and sent all the nukes straight onto {0}'s house. ",
@@ -141,8 +171,20 @@ string[] deathMessages =
         "{1} revealed their vampiric nature, and sucked all of {0}'s blood. ",
         "{1} started a nuclear reactor. Unfortunately, {0} was doing a routine mainetance, and got very radiated. ",
         "{1} overrode {0}'s data with junk data, trying to make a 'glitch player'. It failed, and ",
+        "{1} decided to play as Dr. Primitive, and turned {0} into a monkey. ",
+        "{1} decided to play as Dr. Primitive, and turned {0} into a banana. ",
+        "{1} got inspirted by Calamitas and burned down {0} like they were Azafure or something. ",
+        "{1} got inspirted by Calamitas and burned down {0} like they were Ilmeris or something. ",
+        "{1} got into their hidden Facist side and killed {0} without a single bit of remorse. ",
+        "{1} killed {0} so hard that they got Discord banned in the country. ",
+        "{1} made {0} into a 'kangaroo'. ",
+        "{1} made {0} walk the plank. ",
+        "{1} utterly massacred {0}... in this game. ",
+        "{1} utterly massacred {0}... in real life. ",
+        "{1} threw {0} into a gap that's definitely there. ",
         "{1} Tanaka'd the Tanaka out of {0}'s Tanaka using {2}'s Tanaka Katana. ",
         "{1} sacrificed {0} to get {2}'s blessings. ",
+        "{1} started the Watanagashi festival. As per tradition, {0} was found dead, while {2} is missing. ",
         "{1} and {2} wanted to kill this love, by killing {0}. ",
         "{1} and {2} found {0}'s corpse at an anaboned school in another dimension. ",
         "{1} used {2} as a weapon to kill {0}. ",
@@ -299,7 +341,12 @@ string[] fillerMessages =
         "Wonder how toxic would a ship of {0} and {1} would be?",
         "{0} decided to have a feast with {1} and {2}.",
         "{0} turned to hedonism in these trying times.",
-        "{0} starts imagining this combat as being alike to SBF5 one, despite this being absolutely not the case.",
+        "{0} starts imagining this combat as being alike to EBF5, despite this being absolutely not the case.",
+        "{0} starts imagining this combat as being alike to HSR, despite this being absolutely not the case.",
+        "{0} starts imagining this combat as being alike to Terraria, despite this being absolutely not the case.",
+        "{0} starts imagining this combat as being alike to Minecraft, despite this being absolutely not the case.",
+        "{0} starts imagining this combat as being alike to Genshin, despite this being absolutely not the case.",
+        "{0} starts imagining this combat as being alike to WuWa, despite this being absolutely not the case.",
         "{0} starts to do a nice disco with some monkeys.",
         "{0} wants to turn up the difficulty mode to 'Hellish Paradise'. It's not that game, sorry.",
         "{0} starts behaving like an animal from boredom.",
@@ -313,60 +360,140 @@ string[] fillerMessages =
         "{0} sneaked into the reward room and took all the rewards for themselves.",
         "{0} has a weather report: 'it fuckin windy'.",
         "{0} dances the Third Eye Tango.",
+        "{0} tries to become invisible. It failed.",
+        "{0} tries to become invisible. They became slightly transparent for a moment.",
+        "{0} tries to invoke their Alter Ego for the battle.",
+        "{0} looted absolutely everything that {1} had.",
+        "{0} activated their cheats. So far, the admins didn't notice.",
+        "{0}: HELP MEEEEE, EIRIN!",
+        "{0}: HELP MEEEEE, {1}!",
+        "{0} has a [[SPECIL DEAL]] for you.",
+        "{0} did [Hyperlink Blocked] with {1}.",
+        "{0} made [Hyperlink Blocked] with {1}.",
+        "{0} [Hyperlink Blocked] {1}.",
+        "{0} made an Item Shop! Avaliable items: {1} for only 5G, and {2} for only 9995G.",
+        "{0} wants to reincarnate into a slime in their next life.",
+        "{0} wants to reincarnate into a dog in their next life.",
+        "{0} wants to reincarnate into a cat in their next life.",
+        "{0} wants to reincarnate into a catgirl in their next life.",
+        "{0} wants to reincarnate into a vending machine in their next life.",
+        "{0} wants to reincarnate into a warrior in their next life.",
+        "{0} wants to reincarnate into a hero in their next life.",
+        "{0} wants to reincarnate into a spider in their next life.",
+        "{0} wants to reincarnate into a facist in their next life.",
+        "{0} wants to reincarnate into a monster in their next life.",
+        "{0} wants to reincarnate into a [NSFW CONTENT] in their next life.",
+        "{0} wishes to be tiny.",
+        "{0} wishes to be giant.",
+        "{0} starts singing Rasputin, but about {1} instead.",
+        "{0} utterly massacred {1}... in Super Smash Bros. Ultimate.",
+        "{0} utterly massacred {1}... in Super Smash Bros. Brawl.",
+        "{0} utterly massacred {1}... in Naruto Shippuden Ultimate Ninja Storm 4.",
+        "{0} utterly massacred {1}... in Naruto Shippuden Ultimate Ninja Storm 3 Fullburst.",
+        "{0} utterly massacred {1}... in Minecraft.",
+        "{0} utterly massacred {1}... in bed.",
+        "{0}: NONONO! I feel good.",
+        "{0}: YESYESYES! I feel bad.",
+        "{0} and {1} have a spicy discussion about the upcoming episode.",
+        "{0} and {1} have a spicy discussion about if either aliens or ghosts are real.",
+        "{0} and {1} have a spicy discussion about if either aliens or ghosts are real, while {2} unveils themselves in front of them both as an alien ghost.",
+        "{0}: Hey hey hey. Listen to me, {1}.",
+        "{0}: Well, there's definitely a gap here!\n\n\n",
         "Kogasa Tatara surprises you!",
         "I bet you'll forget about this message, even if you noticed it.",
         "[this filler message was censored]",
         "No message."
     ];
-Console.WriteLine("Provide the number of players:");
-numberOfPlayers = int.Parse(SanitizeTextInput(Console.ReadLine()!, "5", true));
-List<string> players = new List<string>(numberOfPlayers);
-List<string> deadPlayers = new List<string>();
-for (int i = 0; i < numberOfPlayers; i++)
+string charactersFile = $@"{AppDomain.CurrentDomain.BaseDirectory}\characters.txt";
+Console.WriteLine("Welcome to Epic Battles! Checking the presence of 'characters.txt'...");
+if (!File.Exists(charactersFile))
 {
-    Console.WriteLine($"Provide the name of player {i + 1}: ");
-    players.Add(SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false));
+    Console.WriteLine("Character file doesn't exist, entering manual input mode.\nProvide the number of players:");
+    numberOfPlayers = int.Parse(SanitizeTextInput(Console.ReadLine()!, "5", true));
+    List<string> players = new List<string>(numberOfPlayers);
+    List<string> deadPlayers = new List<string>();
+    for (int i = 0; i < numberOfPlayers; i++)
+    {
+        Console.WriteLine($"Provide the name of player {i + 1}: ");
+        players.Add(SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false));
+    }
+    GameLoop(numberOfPlayers, players, deadPlayers);
 }
-Random random = new Random();
-int verdict;
-string message;
-Console.Clear();
-while (deadPlayers.Count < numberOfPlayers - 1)
+else
 {
-    do
+    string[] fileContents = File.ReadAllLines(charactersFile);
+    List<string> players = new List<string>();
+    List<string> deadPlayers = new List<string>();
+    int i = 0;
+    foreach (string line in fileContents)
     {
-        victim = players[random.Next(0, players.Count)];
-        killer = players[random.Next(0, players.Count)];
-        if (players.Count > 2) bystander = players[random.Next(0, players.Count)];
-        else if (victim != "Someone else" && killer != "Someone else") bystander = "Someone else";
-        else bystander = String.Empty;
-    } while (victim == killer || victim == bystander || killer == bystander);
-    verdict = random.Next(0, 100);
-    if (verdict < 60)
+        string sanitizedName = SanitizeTextInput(line, $"Player {i + 1}", false);
+        players.Add(sanitizedName);
+        i++;
+    }
+
+    if (players.Count == 0)
     {
-        message = string.Format(deathMessages[random.Next(0, deathMessages.Length)], victim, killer, bystander) + $"{victim} died.";
-        Console.WriteLine(message);
-        players.Remove(victim);
-        deadPlayers.Add(victim);
+        Console.WriteLine("Nothing found in the character file, entering manual input mode.");
+        Console.WriteLine("Provide the number of players:");
+        numberOfPlayers = int.Parse(SanitizeTextInput(Console.ReadLine()!, "5", true));
+        for (i = 0; i < numberOfPlayers; i++)
+        {
+            Console.WriteLine($"Provide the name of player {i + 1}: ");
+            players.Add(SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false));
+        }
     }
     else
     {
-        message = string.Format(fillerMessages[random.Next(0, fillerMessages.Length)], victim, killer, bystander);
-        Console.WriteLine(message);
+        Console.WriteLine("Characters found in the character file. Starting the battle automatically.");
+        Thread.Sleep(1000);
+        GameLoop(players.Count, players, deadPlayers);
     }
-    Thread.Sleep(3000);
 }
-Console.WriteLine("\nThe battle has ended! Here are the results:");
-Console.WriteLine(String.Concat("1st place: ", players.First()));
-deadPlayers.Reverse();
-
-int place;
-for (int i = 0; i < deadPlayers.Count; i++)
+void GameLoop(int numberOfPlayers, List<string> players, List<string> deadPlayers)
 {
-    place = i + 2;
-    if (place % 10 == 1 && place != 11) Console.WriteLine($"{place}st place: " + deadPlayers[i]);
-    else if (place % 10 == 2 && place != 12) Console.WriteLine($"{place}nd place: " + deadPlayers[i]);
-    else if (place % 10 == 3 && place != 13) Console.WriteLine($"{place}rd place: " + deadPlayers[i]);
-    else Console.WriteLine($"{place}th place: " + deadPlayers[i]);
+    Random random = new Random();
+    int verdict;
+    string message;
+    Console.Clear();
+    while (deadPlayers.Count < numberOfPlayers - 1)
+    {
+        do
+        {
+            victim = players[random.Next(0, players.Count)];
+            killer = players[random.Next(0, players.Count)];
+            if (players.Count > 2) bystander = players[random.Next(0, players.Count)];
+            else if (victim != "Someone else" && killer != "Someone else") bystander = "Someone else";
+            else bystander = String.Empty;
+        } while (victim == killer || victim == bystander || killer == bystander);
+        verdict = random.Next(0, 100);
+        if (verdict < 60)
+        {
+            message = string.Format(deathMessages[random.Next(0, deathMessages.Length)], victim, killer, bystander) + $"{victim} died.";
+            Console.WriteLine(message);
+            players.Remove(victim);
+            deadPlayers.Add(victim);
+        }
+        else
+        {
+            message = string.Format(fillerMessages[random.Next(0, fillerMessages.Length)], victim, killer, bystander);
+            Console.WriteLine(message);
+        }
+        Thread.Sleep(3000);
+    }
+    Console.WriteLine("\nThe battle has ended! Here are the results:");
+    Console.WriteLine(String.Concat("1st place: ", players.First()));
+    deadPlayers.Reverse();
+
+    int place;
+    for (int i = 0; i < deadPlayers.Count; i++)
+    {
+        place = i + 2;
+        if (place % 10 == 1 && place != 11) Console.WriteLine($"{place}st place: " + deadPlayers[i]);
+        else if (place % 10 == 2 && place != 12) Console.WriteLine($"{place}nd place: " + deadPlayers[i]);
+        else if (place % 10 == 3 && place != 13) Console.WriteLine($"{place}rd place: " + deadPlayers[i]);
+        else Console.WriteLine($"{place}th place: " + deadPlayers[i]);
+    }
+    Console.ReadKey();
 }
-Console.ReadKey();
+

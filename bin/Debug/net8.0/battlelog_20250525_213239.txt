@@ -1,0 +1,20 @@
+Players participating in the battle:
+Player 1
+Player 2
+Player 3
+Player 4
+Player 5
+
+Battle start!
+
+Player 1 wanted to do a Midnight Parade, but Player 4 got into the Rumia persona a little bit too well and devoured Player 1. Player 1 died.
+Player 3 hit a punching bag as hard as they could muster. The punching bag hit Player 3 back. Player 3 died.
+Player 2 fought Player 4, but the turn limit struck 0. Player 2 died.
+Player 5 decided to give Technoblade a visit. Player 5 died.
+
+The battle has ended! Here are the results:
+1st place: Player 4
+2nd place: Player 5
+3rd place: Player 2
+4th place: Player 3
+5th place: Player 1

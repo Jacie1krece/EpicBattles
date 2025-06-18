@@ -1,4 +1,5 @@
-﻿string SanitizeTextInput(string input, string fallback, bool integerMode)
+﻿Console.OutputEncoding = System.Text.Encoding.UTF8;
+string SanitizeTextInput(string input, string fallback, bool integerMode)
 {
     input = input.Trim();
     if (input == null) return fallback;
@@ -10,6 +11,15 @@ int numberOfPlayers;
 string victim = string.Empty;
 string killer = string.Empty;
 string bystander = string.Empty;
+const int deathChance = 60; // Percentage chance of a death message being displayed
+string logFileName = $"battlelog_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+string logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, logFileName);
+List<string> logLines = new List<string>();
+void WriteMessage(string input)
+{
+    Console.WriteLine(input);
+    logLines.Add(input);
+}
 string[] deathMessages =
     [
         "{0} was killed by {1}. ",
@@ -45,11 +55,13 @@ string[] deathMessages =
         "{0} considered themselves as an Internet Angel, but {1} gave them a reality check, showing that {0} is only a needy streamer on an internet overdose and with a failing career. ",
         "{0} dared to eat {1}'s pudding. ",
         "{0} refused to listen to {1}. ",
+        "{0} got got by {1}. ",
+        "{0} woke up {1} from their nap so hard {1} one-shot {0}. ",
+        "{0} was busy typing up commands and trying to spawn in rare items, but they were interrupted by {1}. Their last words were: \"/give {0} diamonsss aaaaaaaaaaa\". ",
         "{0}, {1}, and {2} did a strength contest. {2} picked up a car. {1} picked up a building. {0} died of overextertion trying to pick up a water bottle. ",
         "{0}, {1}, and {2} played a battling game, but had only 2 controllers. Instead of doing a little tournament, {1} decided to solve the issue by killing {0}. ",
         "{0}, {1}, and {2} played Among Us together. {0} was so sus that {1} ejected them out of the window, then lost because {2} was the Impostor. ",
         "{0} and {1} fought together, while {2} jokingly played the Mortal Kombat theme. In the end, {1} performed a Fatality on {0}. ",
-        "{0} swapped minds with {1}, oblivious to the fact that {2} planted a bomb on {1}. ",
         "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word 'ramen'. ",
         "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word 'udon'. ",
         "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word 'Ramadan'. ",
@@ -57,6 +69,7 @@ string[] deathMessages =
         "{0}, {1}, and {2} played Shiritori together. {0} ended the game with the word that {1} started with. ",
         "{0} accidentally threw a Wiimote straight into {2}'s TV, so {1} 'accidentally' threw a Wiimote straight into {0}'s skull. ",
         "{0} and {2} battled {1}, Mario & Luigi style. {1} defeated {0}, and {2} remembered that they forgot to bring any 1-up mushrooms. ",
+        "{0} swapped minds with {2}, oblivious to the fact that {1} planted a bomb on {2}. ",
         "",
         "{0} skill issued. ",
         "{0} said the N-word and was kicked out of the game. ",
@@ -108,8 +121,8 @@ string[] deathMessages =
         "{0} became a truly valiant hero. But at what cost? Well, ",
         "{0} played RUSH E so well that their personal piano catched on fire. ",
         "Apparently, {0} was a diabetic, and just died of diabetes. ",
-        "Apparently, {0} was a diabetic, and just died of hyperglicemia. ",
-        "Apparently, {0} was a diabetic, and just died of hypoglicemia. ",
+        "Apparently, {0} was a diabetic, and just died of hyperglycaemia. ",
+        "Apparently, {0} was a diabetic, and just died of hypoglycaemia. ",
         "{0} activated their cheats. They were immediately banned. ",
         "{0} turned into stone. ",
         "{0} ate a Chemical Cookie done in a Magical Mixer. It had POISON inside, and the YUC'e reference overload doesn't help. ",
@@ -124,6 +137,38 @@ string[] deathMessages =
         "{0}'s last words: \"OH MY GOD PLEASE NOOOOOO-\" ",
         "{0}'s last words: \"Shikanoko nokonok-\" ",
         "{0}'s last words: \"Touka spadła ze stołk-\" ",
+        "{0} had the audacity to generate an AI image. ",
+        "{0} did a jetpack joyride... and flew straight into a laser. ",
+        "{0} got eaten by Jožin z Bažin. ",
+        "{0} suddenly realised that they are a character from Amphoreus. ",
+        "{0}'s time ran out. ",
+        "{0} got blown away by the wind. ",
+        "{0} tried to do the Freedom Dive... and failed. ",
+        "{0} entered the Suicide Parade. ",
+        "{0} was sent to the Abyss. ",
+        "{0} has a rave in their own grave. ",
+        "{0} ragequit. ",
+        "{0} couldn't run away from the fact that the world tries to kill them. ",
+        "{0} became glitched beyond recognition. ",
+        "Eventually, {0} stopped thinking. ",
+        "404 ERROR: {0} not found. ",
+        "{0} listened to a song so fire they spontaneously combusted. ",
+        "{0} tried to cook. And detonated the whole kitchen. ",
+        "{0}'s canteen ran empty, so they quenched their thirst with the liquid powering their glowstick. ",
+        "{0} drank dihydrogen monoxide. ",
+        "{0} drank dihydrogen peroxide. ",
+        "{0} entered the Absolutely Safe Capsule. ",
+        "{0} took out a family photo and started talking about how they couldn't wait to get home. This was an obvious death flag. ",
+        "You wouldn't believe what happened to {0}! ",
+        "{0} stopped time. Including for themselves. ",
+        "{0} got embraced by the flame. Literally. ",
+        "SERN decided to send {0} into the past as a jellyman. ",
+        "{0} jumped out of a ground floor window. ",
+        "{0} was sent to Radom. ",
+        "{0} drank Desderman. ",
+        "{0} drank Domestos. ",
+        "{0} drank {0}. ",
+        "{0} ate {0}. ",
         "{1} summoned Beatrice to take care of {0}. ",
         "{1} killed {0}. ",
         "{1} hacked all the nuke launchers in the world and sent all the nukes straight onto {0}'s house. ",
@@ -181,12 +226,18 @@ string[] deathMessages =
         "{1} made {0} walk the plank. ",
         "{1} utterly massacred {0}... in this game. ",
         "{1} utterly massacred {0}... in real life. ",
+        "{1} utterly massacred {0}... in general. ",
         "{1} threw {0} into a gap that's definitely there. ",
+        "{1} decided to become a cannibal, and ate {0} alive. ",
+        "{1} sent {0} to the past using a microwave. ",
+        "{1}: Omae wa mou shindeiru! {0}: NANI?! ",
+        "{1} snapped {0}'s neck. ",
+        "{1} rickrolled {0}. ",
         "{1} Tanaka'd the Tanaka out of {0}'s Tanaka using {2}'s Tanaka Katana. ",
         "{1} sacrificed {0} to get {2}'s blessings. ",
         "{1} started the Watanagashi festival. As per tradition, {0} was found dead, while {2} is missing. ",
         "{1} and {2} wanted to kill this love, by killing {0}. ",
-        "{1} and {2} found {0}'s corpse at an anaboned school in another dimension. ",
+        "{1} and {2} found {0}'s corpse at an abandoned school in another dimension. ",
         "{1} used {2} as a weapon to kill {0}. ",
         "{1} and {2} tapped into the abilities of the Crazy Backup Dancers (Mai Teireida and Satono Nishida), and started dancing behind {0}. Because {1} got Mai's ability, it was them who took all of {0}'s vitality. ",
         "{2} pissed off {1} so much that they did a tableflip straight onto {0}, crushing them with the sheer force of a table. ",
@@ -368,6 +419,7 @@ string[] fillerMessages =
         "{0}: HELP MEEEEE, EIRIN!",
         "{0}: HELP MEEEEE, {1}!",
         "{0} has a [[SPECIL DEAL]] for you.",
+        "{0} has a [[SPECIL DEAL]] for {1}.",
         "{0} did [Hyperlink Blocked] with {1}.",
         "{0} made [Hyperlink Blocked] with {1}.",
         "{0} [Hyperlink Blocked] {1}.",
@@ -383,6 +435,7 @@ string[] fillerMessages =
         "{0} wants to reincarnate into a facist in their next life.",
         "{0} wants to reincarnate into a monster in their next life.",
         "{0} wants to reincarnate into a [NSFW CONTENT] in their next life.",
+        "{0} wants to reincarnate into a human in their next life.",
         "{0} wishes to be tiny.",
         "{0} wishes to be giant.",
         "{0} starts singing Rasputin, but about {1} instead.",
@@ -392,6 +445,7 @@ string[] fillerMessages =
         "{0} utterly massacred {1}... in Naruto Shippuden Ultimate Ninja Storm 3 Fullburst.",
         "{0} utterly massacred {1}... in Minecraft.",
         "{0} utterly massacred {1}... in bed.",
+        "{0} utterly massacred {1}... in speedrunning.",
         "{0}: NONONO! I feel good.",
         "{0}: YESYESYES! I feel bad.",
         "{0} and {1} have a spicy discussion about the upcoming episode.",
@@ -399,6 +453,38 @@ string[] fillerMessages =
         "{0} and {1} have a spicy discussion about if either aliens or ghosts are real, while {2} unveils themselves in front of them both as an alien ghost.",
         "{0}: Hey hey hey. Listen to me, {1}.",
         "{0}: Well, there's definitely a gap here!\n\n\n",
+        "{0} won the battle!\nNot really.",
+        "{0} drank an Espresso Macchiato.",
+        "Tell me one thing: why is {0} even in this game?!",
+        "{0} has ice on their teeth.",
+        "{0} has ice on their tee.",
+        "{0} needs a Noise.",
+        "{0} stepped into a mysterious portal and was transported into a strange alternate dimension where everyone spelled \"colour\" in a different way.",
+        "{0} stepped into a mysterious portal and was transported into a strange alternate dimension where everyone spelled \"color\" in a different way.",
+        "{0} stepped into a mysterious portal and was transported into a strange alternate dimension where everyone spelled \"biscuit\" in a different way.",
+        "{0} stepped into a mysterious portal and was transported into a strange alternate dimension where everyone spelled \"cookie\" in a different way.",
+        "{0} decided to level up solo.",
+        "{0}: I have a pen, I have a apple... Ah! Apple pen!",
+        "{0}: I have a pen, I have pineapple... Ah! Pineapple pen!",
+        "{0}: Apple pen, pineapple pen... Ah! Pen Pineapple Apple Pen!",
+        "{0}: I have a pen, I have a pen... Ah! Long pen!",
+        "{0}: I have a apple, I have pineapple... Ah! Apple pineapple!",
+        "{0}: Long pen, apple pineapple... Ah! Pen Pineapple Apple Pen!",
+        "{0}: I have a {1}, I have a {2}... Ah! {1} {2}!",
+        "{0} has a rave in {1}'s future grave.",
+        "{0} has made a legal contract with {1}.",
+        "{0} has made an illegal contract with {1}.",
+        "{0}: How much is the fish?",
+        "{0}: WHY BE THE [Little Sponge] WHO HATES ITS [$4.99] LIFE\n{0}: WHEN YOU CAN BE A\n{0}: [BIG SHOT!!!]",
+        "{0}: HEY MASTER. I AM MAD SCIENTIST. SO COOOOL. SONUVABITCH!",
+        "{0}: I'm...! The bad guy.",
+        "{0} remembers their past victories (if any).",
+        "{0} drank a buff potion that was literally labeled \"Buff Potion\", and immediately became swole.",
+        "{0} used a calculator to determine their exact odds of winning, and didn't like what they saw. At least they didn't die in this scene.",
+        "{0} finally understood the true meaning of friendship. People who stab you are not friends. People who don't stab you are friends. Probably.",
+        "{0} took a potato chip... and ate it!",
+        "{0} tried to deal a finishing blow to {1}, but missed due to a programming oversight that caused all attacks to have a 1/256 chance of missing.",
+        "{0} had a weird dream, with lots and lots of walking.",
         "Kogasa Tatara surprises you!",
         "I bet you'll forget about this message, even if you noticed it.",
         "[this filler message was censored]",
@@ -406,6 +492,7 @@ string[] fillerMessages =
     ];
 string charactersFile = $@"{AppDomain.CurrentDomain.BaseDirectory}\characters.txt";
 Console.WriteLine("Welcome to Epic Battles! Checking the presence of 'characters.txt'...");
+logLines.Add("Players participating in the battle:");
 if (!File.Exists(charactersFile))
 {
     Console.WriteLine("Character file doesn't exist, entering manual input mode.\nProvide the number of players:");
@@ -415,8 +502,11 @@ if (!File.Exists(charactersFile))
     for (int i = 0; i < numberOfPlayers; i++)
     {
         Console.WriteLine($"Provide the name of player {i + 1}: ");
-        players.Add(SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false));
+        string sanitizedName = SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false);
+        logLines.Add(sanitizedName);
+        players.Add(sanitizedName);
     }
+    logLines.Add("\nBattle start!\n");
     GameLoop(numberOfPlayers, players, deadPlayers);
 }
 else
@@ -428,6 +518,7 @@ else
     foreach (string line in fileContents)
     {
         string sanitizedName = SanitizeTextInput(line, $"Player {i + 1}", false);
+        logLines.Add(sanitizedName);
         players.Add(sanitizedName);
         i++;
     }
@@ -440,15 +531,18 @@ else
         for (i = 0; i < numberOfPlayers; i++)
         {
             Console.WriteLine($"Provide the name of player {i + 1}: ");
-            players.Add(SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false));
+            string sanitizedName = SanitizeTextInput(Console.ReadLine()!, $"Player {i + 1}", false);
+            logLines.Add(sanitizedName);
+            players.Add(sanitizedName);
         }
     }
     else
     {
         Console.WriteLine("Characters found in the character file. Starting the battle automatically.");
         Thread.Sleep(1000);
-        GameLoop(players.Count, players, deadPlayers);
     }
+    logLines.Add("\nBattle start!\n");
+    GameLoop(players.Count, players, deadPlayers);
 }
 void GameLoop(int numberOfPlayers, List<string> players, List<string> deadPlayers)
 {
@@ -467,33 +561,35 @@ void GameLoop(int numberOfPlayers, List<string> players, List<string> deadPlayer
             else bystander = String.Empty;
         } while (victim == killer || victim == bystander || killer == bystander);
         verdict = random.Next(0, 100);
-        if (verdict < 60)
+        if (verdict < deathChance)
         {
             message = string.Format(deathMessages[random.Next(0, deathMessages.Length)], victim, killer, bystander) + $"{victim} died.";
-            Console.WriteLine(message);
+            WriteMessage(message);
             players.Remove(victim);
             deadPlayers.Add(victim);
         }
         else
         {
             message = string.Format(fillerMessages[random.Next(0, fillerMessages.Length)], victim, killer, bystander);
-            Console.WriteLine(message);
+            WriteMessage(message);
         }
         Thread.Sleep(3000);
     }
-    Console.WriteLine("\nThe battle has ended! Here are the results:");
-    Console.WriteLine(String.Concat("1st place: ", players.First()));
+    WriteMessage("\nThe battle has ended! Here are the results:");
+    WriteMessage(String.Concat("1st place: ", players.First()));
     deadPlayers.Reverse();
 
     int place;
     for (int i = 0; i < deadPlayers.Count; i++)
     {
         place = i + 2;
-        if (place % 10 == 1 && place != 11) Console.WriteLine($"{place}st place: " + deadPlayers[i]);
-        else if (place % 10 == 2 && place != 12) Console.WriteLine($"{place}nd place: " + deadPlayers[i]);
-        else if (place % 10 == 3 && place != 13) Console.WriteLine($"{place}rd place: " + deadPlayers[i]);
-        else Console.WriteLine($"{place}th place: " + deadPlayers[i]);
+        if (place % 10 == 1 && place % 100 != 11) WriteMessage($"{place}st place: " + deadPlayers[i]);
+        else if (place % 10 == 2 && place % 100 != 12) WriteMessage($"{place}nd place: " + deadPlayers[i]);
+        else if (place % 10 == 3 && place % 100 != 13) WriteMessage($"{place}rd place: " + deadPlayers[i]);
+        else WriteMessage($"{place}th place: " + deadPlayers[i]);
     }
+    File.WriteAllLines(logFilePath, logLines, System.Text.Encoding.UTF8);
+    Console.WriteLine($"\nBattle log saved to {logFileName}");
     Console.ReadKey();
 }
 

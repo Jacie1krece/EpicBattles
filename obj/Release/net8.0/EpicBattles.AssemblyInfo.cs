@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EpicBattles")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f6e264bd636daee387cc681b059a9b683e26001")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b578b099f4c29e50f857cabce3b4499ad25e2fe1")]
 [assembly: System.Reflection.AssemblyProductAttribute("EpicBattles")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EpicBattles")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
